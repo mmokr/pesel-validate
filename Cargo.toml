@@ -1,0 +1,7 @@
+[package]
+name = "pesel-validate"
+version = "0.0.1"
+authors = ["Maciej Mokrzycki"]
+edition = "2018"
+
+[dependencies]
