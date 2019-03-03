@@ -4,5 +4,9 @@ version = "0.1.0"
 authors = ["Maciej Mokrzycki"]
 edition = "2018"
 
+[lib]
+name = "pesel"
+path = "src/lib.rs"
+
 [dependencies]
 chrono = "0.4.6"
