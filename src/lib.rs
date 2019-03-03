@@ -6,7 +6,16 @@ use std::str;
 pub struct Pesel(String);
 
 impl Pesel {
+
     /// Returns boolean representing if PESEL number is valid.
+    /// 
+    /// # Examples
+    /// 
+    /// ```rust
+    /// use pesel::Pesel;
+    /// 
+    /// assert_eq!(Pesel::validate("02070803628"), true);
+    /// ```
     pub fn validate(input: &str) -> bool {
         let result = if Pesel::validate_length(&input) && Pesel::validate_numeric(&input) {
             Pesel::validate_date(&input) && Pesel::validate_checksum(&input)
