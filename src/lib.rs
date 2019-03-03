@@ -25,6 +25,26 @@ impl Pesel {
         result
     }
 
+    /// Retrives birth date of person holding PESEL number.
+    pub fn get_date(this: &Self) -> NaiveDate {
+        let input = &this.0;
+        let encoded_year = &input[0..2];
+        let encoded_month = &input[2..4];
+        let encoded_day = &input[4..6];
+
+        let century = Pesel::get_century(&encoded_month)
+            .expect("invalid century in valid PESEL");
+        let year = Pesel::get_year(century, &encoded_year);
+        let month = Pesel::get_month(&encoded_month);
+        let day: u32 = encoded_day
+            .parse()
+            .expect("invalid day in valid PESEL");
+
+        let date = NaiveDate::from_ymd(year, month, day);
+
+        date
+    }
+
     fn validate_length(input: &str) -> bool {
         let length = input.len();
         if length != 11 {
