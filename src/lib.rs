@@ -2,6 +2,7 @@ use chrono::NaiveDate;
 use std::io::{Error, ErrorKind};
 use std::str;
 
+#[derive(Clone, Eq, PartialEq, Hash, Debug)]
 pub struct Pesel(String);
 
 impl Pesel {
